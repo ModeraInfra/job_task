@@ -1,0 +1,4 @@
+_service_entry_point:
+  resource: "@ModeraServiceBundle/Controller"
+  type: annotation
+  prefix: /rest
