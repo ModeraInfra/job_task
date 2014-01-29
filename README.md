@@ -22,13 +22,17 @@ Class Node (Tree\Node) contains methods
 - get all children of node
 - converting node to array format 
 
-For get testing used controller
+For get testing used controller. You can see result at http://modera.gizystems.net/rest/get_text_data
+
+
 
 2. REST Service
 
 REST service implemented in simple controller Controller\DefaultController
 
-For data used test data from task definition. For getting data in JSON format used uri "HOST/get_data". It returns Processed data in JSON format. For processing used service created in first part of test task. 
+For data used test data from task definition. For getting data in JSON format used uri "HOST/get_data". It returns Processed data in JSON format.
 
+For processing used service created in first part of test task.
 
+For see return result use http://modera.gizystems.net/rest/get_data.  
 
