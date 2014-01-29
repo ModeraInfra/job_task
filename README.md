@@ -22,6 +22,8 @@ Class Node (Tree\Node) contains methods
 - get all children of node
 - converting node to array format 
 
+For get testing used controller
+
 2. REST Service
 
 REST service implemented in simple controller Controller\DefaultController

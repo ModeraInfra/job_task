@@ -7,6 +7,8 @@ use Modera\Bundle\ServiceBundle\Tree\Tree;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Modera\Bundle\ServiceBundle\Service\TreeService;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class DefaultController
@@ -17,15 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
 
-    /**
-     *
-     * @Sensio\Route("/get_data")
-     *
-     */
-    public function getDataAction(Request $request)
-    {
-        $treeService = $this->get('modera_service.tree_service');
-        $testData = <<<DATA
+    private $testData = <<<DATA
 1|0|Electronics
 1|0|Electronics
 2|0|Video
@@ -40,13 +34,47 @@ class DefaultController extends Controller
 11|9|Canon
 12|11|20D
 DATA;
+
+    /**
+     * @return TreeService
+     */
+    private function getTreeService()
+    {
+        return $this->get('modera_service.tree_service');
+    }
+
+    /**
+     *
+     * @Sensio\Route("/get_data")
+     *
+     */
+    public function getDataAction(Request $request)
+    {
+
+        $treeService = $this->getTreeService();
+
         /* @var $tree Tree */
-        $tree = $treeService->processingInputData($testData);
+        $tree = $treeService->processingInputData($this->testData);
 
         return new JsonResponse($tree->generateJSON());
     }
 
+    /**
+     * @Sensio\Route("/get_text_data")
+     *
+     */
+    public function getTextDataAction()
+    {
+        $treeService = $this->getTreeService();
 
+        $tree = $treeService->processingInputData($this->testData);
+
+        $content = $tree->generateTextRepresentation();
+
+        $content = nl2br($content);
+
+        return new Response($content);
+    }
 
 
 }
