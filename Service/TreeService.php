@@ -23,6 +23,7 @@ use Modera\Bundle\ServiceBundle\Tree\Node;
 class TreeService
 {
     /**
+     * Processing raw data and generate Tree object
      *
      * @param string $input
      */
