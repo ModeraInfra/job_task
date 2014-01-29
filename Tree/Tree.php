@@ -120,17 +120,35 @@ final class Tree
     }
 
     /**
+     * Return all nodes in array form
+     *
+     * @return array
+     */
+    public function getNodesArray()
+    {
+        $result = array();
+        foreach($this->nodes as $node){
+            /* @var $node Node */
+            if ($node->getParent() == null){
+                $result[] = $node->toArray();
+            }
+
+        }
+
+        return $result;
+    }
+
+
+    /**
      * Generate json for tree
      *
      * @return string
      */
     public function generateJSON()
     {
-        $result = array();
-        foreach($this->nodes as $node){
-            /* @var $node Node */
-            $result[] = $node->toArray();
-        }
+        $result = $this->getNodesArray();
+
+        $result = array('root'=>array('expanded'=>true, 'children'=>$result));
 
         return json_encode($result);
     }

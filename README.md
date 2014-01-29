@@ -34,5 +34,5 @@ For data used test data from task definition. For getting data in JSON format us
 
 For processing used service created in first part of test task.
 
-For see return result use http://modera.gizystems.net/rest/get_data.  
+For see return result use http://modera.gizystems.net/rest/get_data.
 

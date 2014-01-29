@@ -44,6 +44,7 @@ DATA;
     }
 
     /**
+     * Return json data for
      *
      * @Sensio\Route("/get_data")
      *
@@ -56,10 +57,14 @@ DATA;
         /* @var $tree Tree */
         $tree = $treeService->processingInputData($this->testData);
 
-        return new JsonResponse($tree->generateJSON());
+        $nodes = $tree->getNodesArray();
+
+        return new JsonResponse(array('text'=>'.','children'=>$nodes));
     }
 
     /**
+     * Get text data
+     *
      * @Sensio\Route("/get_text_data")
      *
      */

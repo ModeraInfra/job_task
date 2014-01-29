@@ -141,7 +141,16 @@ final class Node
      */
     public function toArray()
     {
-        $result = array('id'=>$this->id, 'name'=>$this->name, 'children'=>array());
+        $result = array('text'=>$this->name);
+
+        if (count($this->children) == 0){
+            $result['leaf'] = true;
+        } else {
+            $result['children'] = array();
+            $result['expanded'] = true;
+        }
+
+
         /*
          * Processing children
          */
